@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un message spacial !! 💛</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars-container"></div>
+    <div class="moon"></div>
+    
+    <!-- Scene 1: UFO and Envelope Drop -->
+    <div id="scene-intro" class="scene active">
+        <svg class="ufo" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="ufoGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <ellipse cx="100" cy="70" rx="70" ry="15" fill="#4A5568" opacity="0.6"/>
+            <ellipse cx="100" cy="60" rx="60" ry="25" fill="url(#ufoGradient)"/>
+            <circle cx="100" cy="40" r="30" fill="#87CEEB" opacity="0.7"/>
+            <circle cx="85" cy="35" r="4" fill="#FFD700" class="ufo-light"/>
+            <circle cx="100" cy="35" r="4" fill="#FFD700" class="ufo-light"/>
+            <circle cx="115" cy="35" r="4" fill="#FFD700" class="ufo-light"/>
+            <path d="M 70 60 Q 100 80 130 60" stroke="#FFD700" stroke-width="2" fill="none" opacity="0.5"/>
+        </svg>
+        
+        <div class="envelope-wrapper">
+            <div class="envelope" id="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body">
+                    <div class="heart-seal">💛</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scene 2: Letter -->
+    <div id="scene-letter" class="scene">
+        <div class="letter-container">
+            <div class="letter-paper">
+                <p class="letter-text">
+                    Pour ma chérie, la plus belle étoile <br> de mon univers, <br><br>
+                    Tu es cette lumière qui brille dans mon cœur, <br> <br>
+                    Le rayon de soleil qui illumine mes journées. <br><br>
+                <button class="cosmic-button" id="continue-btn">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scene 3: Question 1 -->
+    <div id="scene-q1" class="scene">
+        <div class="question-container">
+            <h2 class="question-text">Es-tu prête à recevoir un message de l'espace ?</h2>
+            <div class="answer-buttons">
+                <button class="answer-btn" data-next="q2">Oui</button>
+                <button class="answer-btn" data-next="q2">Bien sûr</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scene 4: Question 2 -->
+    <div id="scene-q2" class="scene">
+        <div class="question-container">
+            <h2 class="question-text">Est ce que tu m'aimes ?</h2>
+            <div class="answer-buttons">
+                <button class="answer-btn" data-next="q3">Oui</button>
+                <button class="answer-btn" data-next="q3">Très Fort</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scene 5: Question 3 -->
+    <div id="scene-q3" class="scene">
+        <div class="question-container">
+            <h2 class="question-text">Que penses-tu de cette surprise ?</h2>
+            <div class="answer-buttons">
+                <button class="answer-btn" data-next="final">Incroyable</button>
+                <button class="answer-btn" data-next="final">C'est magique</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scene 6: Final Question -->
+    <div id="scene-final" class="scene">
+        <div class="final-container">
+            <h1 class="final-question">Veux-tu être ma Valentine?</h1>
+            <div class="final-buttons">
+                <button class="final-btn" id="yes-btn-1">Ouiii 💛</button>
+                <button class="final-btn" id="yes-btn-2">Evidemment, mon mari 💛</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scene 7: Final Message -->
+    <div id="scene-end" class="scene">
+        <div class="end-container">
+            <div class="star-explosion"></div>
+            <div class="final-message">
+                <h1>Tu fais de moi l'homme le plus heureux 💛</h1>
+                <p>Je nous souhaite le meilleur à venir.</p>
+                <p class="signature">Je t'aime, Amour ✨</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,509 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+}
+
+/* Stars Background */
+.stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.stars-container::before,
+.stars-container::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    box-shadow: 
+        100px 150px #fff, 250px 80px #fff, 400px 200px #fff,
+        150px 300px #fff, 350px 250px #fff, 500px 150px #fff,
+        80px 400px #fff, 200px 450px #fff, 450px 400px #fff,
+        300px 100px #fff, 180px 200px #fff, 420px 300px #fff,
+        50px 250px #FFD700, 380px 180px #FFD700, 280px 380px #FFD700,
+        600px 100px #fff, 700px 250px #fff, 650px 400px #fff,
+        800px 150px #fff, 850px 350px #fff, 900px 200px #fff,
+        950px 100px #FFD700, 1000px 300px #fff, 1100px 150px #fff,
+        1150px 400px #fff, 1200px 250px #fff, 750px 50px #fff,
+        550px 500px #fff, 1250px 350px #FFD700, 320px 420px #fff,
+        890px 470px #fff, 1050px 520px #fff, 230px 90px #fff,
+        670px 320px #fff, 1180px 180px #fff, 490px 270px #fff,
+        130px 510px #fff, 1300px 120px #fff, 60px 340px #FFD700;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+.stars-container::after {
+    animation-delay: 1.5s;
+    box-shadow: 
+        200px 100px #fff, 350px 150px #fff, 500px 250px #fff,
+        100px 350px #fff, 300px 300px #fff, 550px 100px #fff,
+        120px 450px #FFD700, 250px 500px #fff, 480px 450px #fff,
+        330px 150px #fff, 210px 250px #fff, 450px 350px #fff,
+        70px 200px #fff, 400px 130px #fff, 310px 430px #fff,
+        630px 150px #fff, 730px 300px #fff, 680px 450px #fff,
+        830px 200px #FFD700, 880px 400px #fff, 930px 250px #fff,
+        980px 150px #fff, 1030px 350px #fff, 1130px 200px #fff,
+        1180px 450px #fff, 1230px 300px #FFD700, 780px 100px #fff,
+        580px 550px #fff, 1280px 400px #fff, 350px 470px #fff,
+        920px 520px #fff, 1080px 570px #fff, 260px 140px #fff,
+        700px 370px #fff, 1210px 230px #fff, 520px 320px #FFD700;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.8); }
+}
+
+/* Moon */
+.moon {
+    position: fixed;
+    top: 50px;
+    right: 80px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #FFF8DC, #FFD700);
+    box-shadow: 0 0 60px rgba(255, 215, 0, 0.6), 0 0 120px rgba(255, 215, 0, 0.3);
+    z-index: 1;
+    animation: moonGlow 4s infinite ease-in-out;
+}
+
+@keyframes moonGlow {
+    0%, 100% { box-shadow: 0 0 60px rgba(255, 215, 0, 0.6), 0 0 120px rgba(255, 215, 0, 0.3); }
+    50% { box-shadow: 0 0 80px rgba(255, 215, 0, 0.8), 0 0 160px rgba(255, 215, 0, 0.4); }
+}
+
+/* Scenes */
+.scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    z-index: 10;
+}
+
+.scene.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* UFO Animation */
+.ufo {
+    width: 200px;
+    height: 120px;
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: ufoEntry 3s ease-out forwards;
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+    pointer-events: none;
+}
+
+
+@keyframes ufoEntry {
+    0% {
+        top: -150px;
+        left: -10%;
+    }
+    70% {
+        top: 20%;
+        left: 50%;
+    }
+    100% {
+        top: 20%;
+        left: 50%;
+    }
+}
+
+.ufo-light {
+    animation: ufoBlink 0.8s infinite alternate;
+}
+
+@keyframes ufoBlink {
+    from { opacity: 1; }
+    to { opacity: 0.3; }
+}
+
+/* Envelope */
+.envelope-wrapper {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: envelopeDrop 2s ease-in 3.5s forwards;
+    z-index: 20;
+}
+
+@keyframes envelopeDrop {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+    70% {
+        top: 50%;
+        opacity: 1;
+    }
+    85% {
+        top: 48%;
+    }
+    100% {
+        top: 50%;
+        opacity: 1;
+    }
+}
+
+.envelope {
+    width: 200px;
+    height: 140px;
+    position: relative;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+.envelope:hover {
+    transform: translateY(-50%) scale(1.05);
+}
+
+.envelope-body {
+    width: 200px;
+    height: 120px;
+    background: linear-gradient(to bottom, #F4E4C1, #E8D4A0);
+    border: 3px solid #D4AF37;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.envelope-flap {
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-top: 80px solid #D4AF37;
+    position: absolute;
+    top: 23px;
+    left: 0;
+    transform-origin: top center;
+    transition: transform 0.6s ease;
+    z-index: 2;
+}
+
+.envelope.opening .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.heart-seal {
+    font-size: 40px;
+    animation: heartbeat 1.5s infinite ease-in-out;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Letter */
+.letter-container {
+    opacity: 0;
+    transform: scale(0.8);
+    animation: letterAppear 1s ease-out 0.5s forwards;
+}
+
+@keyframes letterAppear {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.letter-paper {
+    background: linear-gradient(to bottom, #FFF9E6, #FFF5D6);
+    padding: 60px 50px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    max-width: 600px;
+    text-align: center;
+    border: 2px solid #D4AF37;
+}
+
+.letter-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    color: #2c3e50;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+/* Buttons */
+.cosmic-button,
+.answer-btn,
+.final-btn {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1a1a2e;
+    border: none;
+    padding: 16px 40px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.cosmic-button:hover,
+.answer-btn:hover,
+.final-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
+}
+
+.cosmic-button:active,
+.answer-btn:active,
+.final-btn:active {
+    transform: translateY(-2px);
+}
+
+/* Questions */
+.question-container {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: questionAppear 1s ease-out 0.3s forwards;
+}
+
+@keyframes questionAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.question-text {
+    font-size: 36px;
+    font-weight: 300;
+    color: #FFD700;
+    margin-bottom: 50px;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    max-width: 700px;
+}
+
+.answer-buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Final Question */
+.final-container {
+    text-align: center;
+    opacity: 0;
+    animation: finalAppear 1.5s ease-out 0.5s forwards;
+}
+
+@keyframes finalAppear {
+    to { opacity: 1; }
+}
+
+.final-question {
+    font-family: 'Dancing Script', cursive;
+    font-size: 56px;
+    color: #FFD700;
+    margin-bottom: 60px;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+    animation: finalPulse 2s infinite ease-in-out;
+}
+
+@keyframes finalPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.final-buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.final-btn {
+    font-size: 24px;
+    padding: 20px 50px;
+}
+
+/* End Scene */
+.end-container {
+    text-align: center;
+    position: relative;
+}
+
+.star-explosion {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    animation: explode 1.5s ease-out forwards;
+}
+
+@keyframes explode {
+    0% {
+        box-shadow: 
+            0 0 0 0 rgba(255, 215, 0, 0.8),
+            0 0 0 0 rgba(255, 215, 0, 0.8),
+            0 0 0 0 rgba(255, 215, 0, 0.8);
+    }
+    100% {
+        box-shadow: 
+            0 -150px 50px -20px rgba(255, 215, 0, 0),
+            130px 75px 50px -20px rgba(255, 215, 0, 0),
+            -130px 75px 50px -20px rgba(255, 215, 0, 0),
+            0 150px 50px -20px rgba(255, 215, 0, 0),
+            -130px -75px 50px -20px rgba(255, 215, 0, 0),
+            130px -75px 50px -20px rgba(255, 215, 0, 0);
+    }
+}
+
+.final-message {
+    opacity: 0;
+    animation: messageReveal 1.5s ease-out 1s forwards;
+    max-width: 800px;
+    padding: 40px;
+}
+
+@keyframes messageReveal {
+    to { opacity: 1; }
+}
+
+.final-message h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 52px;
+    color: #FFD700;
+    margin-bottom: 30px;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+}
+
+.final-message p {
+    font-size: 24px;
+    color: #FFF9E6;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 32px;
+    color: #FFD700;
+    margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .moon {
+        width: 80px;
+        height: 80px;
+        top: 30px;
+        right: 30px;
+    }
+
+    .ufo {
+        width: 150px;
+        height: 90px;
+    }
+
+    .envelope {
+        width: 160px;
+        height: 112px;
+    }
+
+    .envelope-body {
+        width: 160px;
+        height: 96px;
+    }
+
+    .envelope-flap {
+        border-left: 80px solid transparent;
+        border-right: 80px solid transparent;
+        border-top: 64px solid #D4AF37;
+    }
+
+    .letter-paper {
+        padding: 40px 30px;
+        margin: 20px;
+    }
+
+    .letter-text {
+        font-size: 22px;
+    }
+
+    .question-text {
+        font-size: 28px;
+        margin-bottom: 40px;
+        padding: 0 20px;
+    }
+
+    .final-question {
+        font-size: 40px;
+        margin-bottom: 40px;
+        padding: 0 20px;
+    }
+
+    .answer-buttons,
+    .final-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .answer-btn,
+    .final-btn {
+        width: 250px;
+    }
+
+    .final-message h1 {
+        font-size: 36px;
+    }
+
+    .final-message p {
+        font-size: 18px;
+    }
+
+    .signature {
+        font-size: 24px;
+    }
+}
+"
+Observation: Create successful: /app/style.css
